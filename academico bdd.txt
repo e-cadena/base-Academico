@@ -1,0 +1,64 @@
+//Creamos la base de datos
+CREATE DATABASE "Academico"
+    WITH 
+    OWNER = "Esteban"
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'Spanish_Ecuador.1252'
+    LC_CTYPE = 'Spanish_Ecuador.1252'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1;
+
+//creamos la tabla
+CREATE TABLE public."Persona"
+(
+    "idPersona" integer NOT NULL,
+    cedula character varying(10) COLLATE pg_catalog."default" NOT NULL,
+    nombre character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    apellido character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    "fechaNacimiento" date NOT NULL,
+    "notaPoo" numeric(5,0) NOT NULL,
+    genero character varying(10) COLLATE pg_catalog."default" NOT NULL,
+    "nota Bdd" numeric NOT NULL,
+    CONSTRAINT "Persona_pkey" PRIMARY KEY ("idPersona")
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public."Persona"
+    OWNER to "Esteban";
+
+//Aqui realizamos insercion de datos
+INSERT INTO public."persona"(
+	"idPersona", cedula, nombre, apellido, "fechaNacimiento", "notaPoo", genero, "nota Bdd")
+	VALUES (1, '1715524852', 'Danny Andres', 'Zapata Panchi', '2000/02/18', '9', 'Masculino', '9'),
+	(2, '1715248635', 'Marco Ivan', 'Cobos Morales', '1992/10/31', '8', 'Maculino', '9'),
+	(3, '1742530258', 'Jefferson Alexander', 'Aguirre Pizarro', '1997/11/02' , '8', 'Maculino', '8'),
+	(4, '1712543689', 'Marco Vinicio', 'Aguirre Soria' , '1997/10/02', '7', 'Maculino', '7'),
+	(5, '1712568935', 'David Fernando', 'Quinaluisa', '1996/10/02' , '8', 'Masculino', '9'),
+	(6, '1715426855', 'Fanny Elizabeth', 'Mayorga Solorzano', '1997/10/15', '7', 'Femenino', '9'),
+	(7, '1712536842', 'Hector Andres', 'Flores Bumbury', '1997/02/14', '8', 'Masculino', '8'),
+	(8, '1723658642', 'Jimmy Wladimir', 'Sanchez Iza', '1997/10/04', '6','Masculino', '5'),
+	(9, '1742589602', 'Sofia Alejandra', 'Cadena Valverde', '1995/06/27', '9', 'Femenino', '9'),
+	(10, '1745869350', 'Damaris Victoria', 'Morillo Andrade', '1999/10/15', '9', 'Femenino', '9'),
+	(11, '1719938340', 'Mishell Carmiña', 'Quilca', '1997/08/25', '9', 'Femenino', '8'),
+	(12, '1740025480', 'Franklin Xavier', 'Alvarez Castro', '1996/04/21', '8', 'Masculino', '6'),
+	(13, '1742302589', 'Melanny Maria', 'Narvaez Sornoza', '1998/05/21', '5', 'Femenino', '7'),
+	(14, '1745235896', 'Sergio Norberto', 'Firminho Suntaxy','1997/10/24', '5', 'Masculino', '8');
+
+//Seleccionamos las columnas: cedula nombre y apellido
+
+	select cedula , nombre , apellido from persona;
+
+//Obtenemos un solo registro con los datos de celdula, nombre y apellido
+
+ 	select cedula , nombre , apellido from persona where cedula='1719938340';
+
+//Nos permite ordenar las personas por orden de apellido alfabeticmente
+
+	select * from persona order by apellido;
+
+// Aqui ordenamos por nota de mayor a menor
+
+	select * apellido order by notaPoo desc;
